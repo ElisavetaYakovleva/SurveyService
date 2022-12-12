@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link th:href="@{css/login.css}" rel="stylesheet" />
+</head>
+<body>
+
+<p th:text="${message}"/>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<div id="login">
+    <form th:action="@{/login}" method="post">
+        <fieldset class="clearfix">
+            <p><span class="fontawesome-user"></span><input type="text" name="username" required placeholder="Введите имя пользователя..." ></p> <!-- JS because of IE support; better: placeholder="Username" -->
+            <p><span class="fontawesome-lock"></span><input type="password" name="password"  required placeholder="Введите пароль..." ></p> <!-- JS because of IE support; better: placeholder="Password" -->
+            <p><input type="submit" value="ВОЙТИ"></p>
+        </fieldset>
+    </form>
+    <p>Нет аккаунта? &nbsp;&nbsp;<a th:href="@{/registration}">Регистрация</a><span class="fontawesome-arrow-right"></span></p>
+</div>
+
+</body>
+</html>
